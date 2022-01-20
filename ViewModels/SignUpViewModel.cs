@@ -13,7 +13,8 @@ public class SingUpViewModel : IValidatableObject
     public DateTimeOffset Birthdate { get; set; }
     
     [Required(ErrorMessage = "Введите номер телефона")]
-    [Phone(ErrorMessage = "Формат телефон номера неправельный.")]
+    [RegularExpression(@"^[\+]?(998[-\s\.]?)([0-9]{2}[-\s\.]?)([0-9]{3}[-\s\.]?)([0-9]{2}[-\s\.]?)([0-9]{2}[-\s\.]?)$",
+    ErrorMessage = "Формат телефон номера неправельный.")]
     [Display(Name = "Телефон номер")]
     public string Phone { get; set; }
     
