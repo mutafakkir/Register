@@ -1,14 +1,16 @@
-using register.Data;
-using register.Entity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+using register.Data;
+using register.Entity;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+
 builder.Services.AddDbContext<RegisterDbContext>(options =>
 {
-    options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 builder.Services.AddIdentity<User, IdentityRole>(options =>
@@ -20,8 +22,6 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 .AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<RegisterDbContext>();
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
@@ -39,10 +39,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
+
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapDefaultControllerRoute();
 
 app.Run();

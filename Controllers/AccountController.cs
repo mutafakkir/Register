@@ -34,14 +34,17 @@ public class AccountController : Controller
         var user = new User()
         {
             Fullname = model.Fullname,
-            Email = model.Email
+            Email = model.Email,
+            UserName = model.Username,
+            Birthdate = model.Birthdate,
+            PhoneNumber = model.Phone
         };
 
         var result = await _userM.CreateAsync(user, model.Password);
 
         if (result.Succeeded)
         {
-            return LocalRedirect($"/account/signup?returnUrl={model.ReturnUrl}");
+            return LocalRedirect($"signup?returnUrl={model.ReturnUrl}");
         }
 
         return BadRequest(JsonSerializer.Serialize(result.Errors));

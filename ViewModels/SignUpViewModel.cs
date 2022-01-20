@@ -24,6 +24,10 @@ public class SignUpViewModel : IValidatableObject
     [EmailAddress(ErrorMessage = "Неправельный формат email адреса.")]
     [Display(Name = "Ваш email")]
     public string Email { get; set; }
+
+    [Required(ErrorMessage = "Введите username")]
+    [Display(Name = "Юзернейм")]
+    public string Username { get; set; }
     
     [Required(ErrorMessage = "Введите пароль")]
     [MinLength(6, ErrorMessage = "Пароль должен состоять не менее из 6 символов.")]
