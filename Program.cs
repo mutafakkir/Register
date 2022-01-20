@@ -1,4 +1,24 @@
+using register.Data;
+using register.Entity;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<RegisterDbContext>(options =>
+{
+    options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"));
+});
+
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
+    options.Password.RequiredLength = 6;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+})
+.AddRoles<IdentityRole>()
+.AddEntityFrameworkStores<RegisterDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -18,6 +38,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

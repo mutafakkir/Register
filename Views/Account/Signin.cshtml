@@ -1,0 +1,29 @@
+@model register.ViewModels.SignInViewModel;
+
+@{
+    Layout = "_AuthLayout";
+}
+
+<form class="form-signin" method="post" asp-action="Signup" asp-controller="Account">
+    <div class="text-center mb-4">
+        <img class="mb-4" src="~/logo.svg" alt="" width="72"
+            height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Ilmhub IT School</h1>
+    </div>
+
+    <div class="form-label-group">
+        <input asp-for="Email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+        <label class="text-muted" asp-for="Email" for="inputEmail"></label>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-label-group">
+        <input asp-for="Password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        <label class="text-muted" asp-for="Password" for="inputPassword"></label>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block pos" type="submit">Войти</button>
+    <p>Нет аккаунта? <a rel="stylesheet" href="/signup?returnUrl=@Model.ReturnUrl">Регистрация</a></p>
+    <p class="mt-5 mb-3 text-muted text-center">© @DateTimeOffset.Now.Year</p>
+</form>

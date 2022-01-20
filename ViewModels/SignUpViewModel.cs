@@ -4,6 +4,8 @@ namespace register.ViewModels;
 
 public class SignUpViewModel : IValidatableObject
 {
+    public string ReturnUrl { get; set; }
+    
     [Required(ErrorMessage = "Введите Имя и Фамилию")]
     [Display(Name = "Имя Фамилия")]
     public string Fullname { get; set; }
