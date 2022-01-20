@@ -5,10 +5,10 @@ namespace register.Controllers;
 
 public class AccountController : Controller
 {
-    [HttpGet("action")]
+    [HttpGet("signup")]
     public IActionResult Signup() => View();
 
-    [HttpPost("action")]
+    [HttpPost("singup")]
     public IActionResult Signup(SignUpViewModel model)
     {
         if(!ModelState.IsValid)
