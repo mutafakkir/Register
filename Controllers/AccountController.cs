@@ -5,17 +5,17 @@ namespace register.Controllers;
 
 public class AccountController : Controller
 {
-    [HttpGet("[action]")]
+    [HttpGet("action")]
     public IActionResult Signup() => View();
 
-    [HttpPost("[action]")]
-    public IActionResult Sigup(SingUpViewModel model)
+    [HttpPost("action")]
+    public IActionResult Signup(SignUpViewModel model)
     {
         if(!ModelState.IsValid)
         {
             return View(model);
         }
 
-        return Ok("Вы успешно зарегистрированы");
+        return Ok("Вы успешно зарегестрироавны!");
     }
 }

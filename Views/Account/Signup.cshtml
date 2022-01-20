@@ -1,4 +1,4 @@
-@model register.ViewModels.SingUpViewModel;
+@model register.ViewModels.SignUpViewModel;
 
 @{
     Layout = "_AuthLayout";
@@ -9,8 +9,6 @@
         <img class="mb-4" src="~/logo.svg" alt="" width="72"
             height="72">
         <h1 class="h3 mb-3 font-weight-normal">Ilmhub IT School</h1>
-        <p>Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element. <a
-                href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a>
         </p>
     </div>
 
@@ -54,6 +52,6 @@
         <input id="rememberme" asp-for="RememberMe" type="checkbox">
         <label asp-for="RememberMe" for="rememberme" class="text-muted ms-2"></label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Регистрация</button>
     <p class="mt-5 mb-3 text-muted text-center">© @DateTimeOffset.Now.Year</p>
 </form>

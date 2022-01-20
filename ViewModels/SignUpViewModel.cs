@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace register.ViewModels;
 
-public class SingUpViewModel : IValidatableObject
+public class SignUpViewModel : IValidatableObject
 {
     [Required(ErrorMessage = "Введите Имя и Фамилию")]
     [Display(Name = "Имя Фамилия")]
@@ -29,7 +29,7 @@ public class SingUpViewModel : IValidatableObject
     public string Password { get; set; }
 
     [Required(ErrorMessage = "Подтвердите пароль")]
-    [MinLength(6, ErrorMessage = "Пароли не совпадают, проверьте еще раз.")]
+    [Compare(nameof(Password), ErrorMessage = "Пароли не совпадают, проверьте еще раз.")]
     [Display(Name = "Подтвердить пароль")]
     public string ConfirmPassword { get; set; }
     
