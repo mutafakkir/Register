@@ -12,7 +12,7 @@ using register.Data;
 namespace register.Migrations
 {
     [DbContext(typeof(RegisterDbContext))]
-    [Migration("20220120163411_Create")]
+    [Migration("20220121120253_Create")]
     partial class Create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
