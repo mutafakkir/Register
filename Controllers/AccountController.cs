@@ -37,14 +37,14 @@ public class AccountController : Controller
             Email = model.Email,
             UserName = model.Username,
             Birthdate = model.Birthdate,
-            PhoneNumber = model.Phone
+            PhoneNumber = model.Phone,
         };
 
         var result = await _userM.CreateAsync(user, model.Password);
 
         if (result.Succeeded)
         {
-            return LocalRedirect($"signup?returnUrl={model.ReturnUrl}");
+            return LocalRedirect($"/signin?returnUrl={model.ReturnUrl}");
         }
 
         return BadRequest(JsonSerializer.Serialize(result.Errors));
@@ -53,7 +53,7 @@ public class AccountController : Controller
     [HttpGet("signin")]
     public IActionResult Signin(string returnUrl)
     {
-        return View(new SignInViewModel() { ReturnUrl = returnUrl });
+        return View(new SignInViewModel() { ReturnUrl = returnUrl ?? string.Empty });
     }
 
     [HttpPost("signin")]

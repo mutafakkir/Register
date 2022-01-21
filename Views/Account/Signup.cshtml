@@ -5,6 +5,7 @@
 }
 
 <form class="form-signin" method="post" asp-action="Signup" asp-controller="Account">
+    <input type="text" asp-for="@Model.ReturnUrl" hidden="true">
     <div class="text-center mb-4">
         <img class="mb-4" src="~/logo.svg" alt="" width="72"
             height="72">

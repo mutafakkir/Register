@@ -4,7 +4,8 @@
     Layout = "_AuthLayout";
 }
 
-<form class="form-signin" method="post" asp-action="Signup" asp-controller="Account">
+<form class="form-signin" method="post" asp-action="Signin" asp-controller="Account">
+    <input type="text" hidden="true" asp-for="@Model.ReturnUrl">
     <div class="text-center mb-4">
         <img class="mb-4" src="~/logo.svg" alt="" width="72"
             height="72">
@@ -24,6 +25,6 @@
     </div>
 
     <button class="btn btn-lg btn-primary btn-block pos" type="submit">Войти</button>
-    <p>Нет аккаунта? <a rel="stylesheet" href="/signup?returnUrl=@Model.ReturnUrl">Регистрация</a></p>
+    <p>Нет аккаунта? <a rel="stylesheet" asp-action="SignIn" asp-controller="Account" asp-route-returnUrl="@Model.ReturnUrl">Регистрация</a></p>
     <p class="mt-5 mb-3 text-muted text-center">© @DateTimeOffset.Now.Year</p>
 </form>
